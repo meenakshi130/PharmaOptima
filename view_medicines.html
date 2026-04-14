@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>Medicines</title>
+</head>
+
+<body>
+
+
+<h2>Medicines List</h2>
+
+<form method="POST" action="/view_medicines">
+    <input type="text" name="search" placeholder="Search by Drug ID or Name">
+    <button type="submit">Search</button>
+</form>
+
+<br>
+
+<br>
+<table border="1">
+
+<tr>
+<th>ID</th>
+<th>Name</th>
+<th>Category</th>
+<th>Type</th>
+<th>Year</th>
+<th>Region</th>
+<th>Month</th>
+<th>Units Sold</th>
+<th>Price</th>
+<th>Expiry Date</th>
+</tr>
+
+{% for m in medicines %}
+
+<tr>
+<td>{{m[0]}}</td>
+<td>{{m[1]}}</td>
+<td>{{m[2]}}</td>
+<td>{{m[3]}}</td>
+<td>{{m[4]}}</td>
+<td>{{m[5]}}</td>
+<td>{{m[6]}}</td>
+<td>{{m[7]}}</td>
+<td>{{m[8]}}</td>
+<td>{{m[9]}}</td>
+<td>{{ m }}</td> 
+<td>
+<a href="/delete/{{m[1]}}" onclick="return confirm('Are you sure?')">Delete</a>
+</td>
+</tr>
+
+{% endfor %}
+
+</table>
+
+<br>
+
+<a href="/dashboard">Back to Dashboard</a>
+
+</body>
+</html>
