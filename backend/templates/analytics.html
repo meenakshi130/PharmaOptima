@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Analytics - PharmaOptima</title>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial;
+            background: #f4f7fa;
+        }
+
+        .navbar {
+            background: #4932ce;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            font-size: 26px;
+            font-weight: bold;
+        }
+
+        .container {
+            width: 85%;
+            margin: 30px auto;
+        }
+
+        .section {
+            background: rgb(196, 240, 170);
+            padding: 25px;
+            margin-bottom: 25px;
+            border-radius: 12px;
+            box-shadow: 0px 0px 10px rgba(0,0,0,0.08);
+        }
+
+        h2 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th {
+            background: #2e86de;
+            color: white;
+            padding: 12px;
+        }
+
+        td {
+            padding: 10px;
+            text-align: center;
+            border-bottom: 1px solid #0f0f0f;
+        }
+
+        .price-box p {
+            font-size: 16px;
+            margin: 12px 0;
+        }
+
+        .back-btn {
+            text-decoration: none;
+            background: #34495e;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 6px;
+            display: inline-block;
+        }
+
+        .back-btn:hover {
+            background: #1f2d3a;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="navbar">
+    PharmaOptima Analytics
+</div>
+
+<div class="container">
+
+    <div class="section">
+        <h2>Top 5 Highest Selling Medicines</h2>
+
+        <table>
+            <tr>
+                <th>Medicine Name</th>
+                <th>Units Sold</th>
+            </tr>
+
+            {% for m in top_selling %}
+            <tr>
+                <td>{{ m[0] }}</td>
+                <td>{{ m[1] }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+
+    <div class="section price-box">
+        <h2>Price Analysis</h2>
+
+        <p><b>Highest Price Medicine:</b> {{ highest_price[0] }} — ₹{{ highest_price[1] }}</p>
+
+        <p><b>Lowest Price Medicine:</b> {{ lowest_price[0] }} — ₹{{ lowest_price[1] }}</p>
+
+        <p><b>Average Medicine Price:</b> ₹{{ avg_price }}</p>
+    </div>
+
+    <a href="/dashboard" class="back-btn">Back to Dashboard</a>
+
+</div>
+
+</body>
+</html>
